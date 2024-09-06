@@ -18,7 +18,7 @@ struct ColorBlendExample: View {
                 Text("Now, you can easily mix two `Color` types in SwiftUI.")
                     .readingTextStyle()
                 GroupBox {
-                    Text("Mixing \(accessibilityName: colorOne) with \(accessibilityName: colorTwo) by \(rhs)")
+                    Text("Mixing \(accessibilityName: colorOne) with \(accessibilityName: colorTwo) by \(String(format: "%.2f", rhs))")
                         .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
                     Color(colorOne.mix(with: colorTwo, by: rhs))
                         .frame(height: 16)
@@ -35,7 +35,7 @@ struct ColorBlendExample: View {
                     .clipShape(RoundedRectangle(cornerRadius: 4))
                     .padding(.bottom, 32)
                 """)
-                Text("This one is super easy to use! Just call `.mix(with:, by:)` (and optionally a color space too) to mix the caller with another `Color`. There's not much more to say about this one, happy mixing! And, as usual, they really fun in a `TimelineView` or any other animation:")
+                Text("This one is super easy to use! Just call `.mix(with:, by:)` (and optionally a color space too) to mix the caller with another `Color`. There's not much more to say about this one, happy mixing! And, as usual, they are really fun in a `TimelineView` or any other animation:")
                     .readingTextStyle()
                 TimelineView(.animation) { timeline in
                     let time = timeline.date.timeIntervalSince1970

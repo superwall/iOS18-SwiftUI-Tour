@@ -47,7 +47,7 @@ struct ScrollViewExample: View {
                 }
                 .buttonStyle(.bordered)
                 """)
-                Text("Cool! So what about that button that's hiding and showing at the top? Well, that uses another awesome `ScrollView` feature - `onScrollGeometryChange`. This lets you pass in a condition, return its type in a closure and then act on it. It sounds a little confusing, but is most cases you can just use a plain old `Bool`.\n\nThe code below is what triggers hiding and showing the \"Back to Tp[\" button:")
+                Text("Cool! So what about that button that's hiding and showing at the top? Well, that uses another awesome `ScrollView` feature - `onScrollGeometryChange`. This lets you pass in a condition, return its type in a closure and then act on it. It sounds a little confusing, but in most cases you can just use a plain old `Bool`.\n\nThe code below is what triggers hiding and showing the \"Back to Top\" button:")
                     .readingTextStyle()
                 CodeView(code: """
                 .onScrollGeometryChange(for: Bool.self) { geo in
@@ -118,6 +118,7 @@ struct ScrollViewExample: View {
                     }
                 }
                 .buttonStyle(.borderedProminent)
+                .offset(y: 32)
                 .transition(.asymmetric(insertion: .move(edge: .top),
                                         removal: .opacity))
             }

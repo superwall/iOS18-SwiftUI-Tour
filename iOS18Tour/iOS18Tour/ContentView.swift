@@ -21,9 +21,6 @@ struct ContentView: View {
                         headerView
                     }
                     Section("New APIs") {
-                        NavigationLink("Zoom Transitions") {
-                            ZoomExample()
-                        }
                         NavigationLink("Mesh Gradients") {
                             MeshGradientExample()
                         }
@@ -32,6 +29,9 @@ struct ContentView: View {
                         }
                         NavigationLink("Text Effects") {
                             TextEffectExample()
+                        }
+                        NavigationLink("Zoom Transitions") {
+                            ZoomExample()
                         }
                         NavigationLink("SF Symbol Updates") {
                             SFSymbolExample()

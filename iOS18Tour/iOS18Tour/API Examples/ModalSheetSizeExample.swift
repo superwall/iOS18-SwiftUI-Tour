@@ -48,7 +48,7 @@ struct ModalSheetSizeExample: View {
                     CodeView(code: """
                     .sheet(isPresented: $stickyPresent) {
                         DemoStickyView()
-                            .presentationSizing(.form.sticky())
+                            .presentationSizing(.page.sticky())
                     }
                     """)
                 }
@@ -65,7 +65,7 @@ struct ModalSheetSizeExample: View {
         }
         .sheet(isPresented: $stickyPresent) {
             DemoStickyView()
-                .presentationSizing(.form.sticky())
+                .presentationSizing(.page.sticky())
         }
         .frame(maxWidth: 560)
         .navigationTitle("Modal Sheet Size Examples")

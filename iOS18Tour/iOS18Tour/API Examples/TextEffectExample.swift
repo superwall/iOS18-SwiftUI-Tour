@@ -13,7 +13,7 @@ struct TextEffectExample: View {
     var body: some View {
         ScrollView {
             VStack {
-                Text("Now, you can have fine-grained control over how `Text` will eventually render the `String`. It runs through `TextRenderer`, and its a protocol that lets you hook into how the text is drawn.\n\nThis is neat because it allows for a bunch of amazing animations. Try this one out:")
+                Text("Now, you can have fine-grained control over how `Text` will eventually render its `String`. It runs through `TextRenderer`, and its a protocol that lets you hook into how the text is drawn.\n\nThis is neat because it allows for a bunch of amazing animations. Try this one out:")
                     .readingTextStyle()
                 GroupBox {
                     Toggle("Show Neato Text", isOn: $bobbleText.animation())
@@ -112,7 +112,7 @@ struct AppearanceEffectRenderer: TextRenderer, Animatable {
     var totalDuration: TimeInterval
     
     var spring: Spring {
-        .snappy(duration: elementDuration - 0.05, extraBounce: 0.4)
+        .snappy(duration: elementDuration - 0.05, extraBounce: 0.2)
     }
     
     var animatableData: Double {
@@ -163,7 +163,7 @@ struct AppearanceEffectRenderer: TextRenderer, Animatable {
         
         let opacity = UnitCurve.easeIn.value(at: 1.4 * progress)
         
-        let blurRadius =
+        let invert =
         slice.typographicBounds.rect.height / 16 *
         UnitCurve.easeIn.value(at: 1 - progress)
         
@@ -175,9 +175,9 @@ struct AppearanceEffectRenderer: TextRenderer, Animatable {
             initialVelocity: 0,
             time: time)
         
-        context.translateBy(x: 0, y: translationY)
-        context.addFilter(.blur(radius: blurRadius))
+        context.addFilter(.colorInvert(invert))
         context.opacity = opacity
+        context.translateBy(x: 0, y: translationY)
         context.draw(slice, options: .disablesSubpixelQuantization)
     }
     

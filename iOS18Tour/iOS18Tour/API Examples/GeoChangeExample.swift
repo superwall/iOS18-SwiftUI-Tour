@@ -32,7 +32,7 @@ struct GeoChangeExample: View {
                 GroupBox {
                     HStack {
                         Text("Circle Size:")
-                        Text(topCircleHeight, format: .number)
+                        Text(String(format: "%.2f", topCircleHeight))
                             .contentTransition(.numericText(value: topCircleHeight))
                             .animation(.smooth, value: topCircleHeight)
                         Spacer()
@@ -54,13 +54,7 @@ struct GeoChangeExample: View {
                         }
                     Circle()
                         .fill(Color.blue)
-                        .frame(height: topCircleHeight)
-                        .onGeometryChange(for: Double.self) { proxy in
-                            return proxy.size.height
-                        } action: { newValue in
-                            bottomCircleHeight = (newValue/2).rounded()
-                        }
-                    
+                        .frame(height: bottomCircleHeight)
                 }
                 Text("Here's how it works:")
                     .readingTextStyle()

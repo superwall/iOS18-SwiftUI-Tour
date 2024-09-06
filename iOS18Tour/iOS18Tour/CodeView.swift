@@ -15,6 +15,8 @@ class CodeFontSize {
 
 struct CodeView: View {
     let code: String
+    private let ceiling: CGFloat = 32
+    private let floor: CGFloat = 8
     @Environment(CodeFontSize.self) private var fontSize
     @ScaledMetric(wrappedValue: 32, relativeTo: .body) private var scaledOffset: Double
     
@@ -29,11 +31,13 @@ struct CodeView: View {
                 HStack {
                     Spacer()
                     Button("", systemImage: "plus.app.fill") {
-                        toggleText(larger: true)
+                        adjustTextSize(increase: true)
                     }
+                    .disabled(fontSize.preferredSize == ceiling)
                     Button("", systemImage: "minus.circle.fill") {
-                        toggleText(larger: false)
+                        adjustTextSize(increase: false)
                     }
+                    .disabled(fontSize.preferredSize == floor)
                 }
                 .symbolRenderingMode(.hierarchical)
                 .sensoryFeedback(.selection, trigger: fontSize.preferredSize)
@@ -42,28 +46,19 @@ struct CodeView: View {
             .padding(.bottom, scaledOffset)
     }
     
-    private func toggleText(larger: Bool) {
-        let ceiling: CGFloat = 30
-        let floor: CGFloat = 14
-        var newSize = fontSize.preferredSize
+    private func adjustTextSize(increase: Bool) {
+        let sizeChange: CGFloat = 2
+        let newSize = fontSize.preferredSize + (increase ? sizeChange : -sizeChange)
         
-        if larger {
-            if newSize >= ceiling {
-                newSize = floor
-            } else {
-                newSize += 2
-            }
-        } else {
-            if newSize <= floor {
-                newSize = ceiling
-            } else {
-                newSize -= 2
-            }
-        }
+        guard isNewSizeWithinBounds(newSize) else { return }
         
         withAnimation(.smooth) {
             fontSize.preferredSize = newSize
         }
+    }
+
+    private func isNewSizeWithinBounds(_ size: CGFloat) -> Bool {
+        return size >= floor && size <= ceiling
     }
 }
 
