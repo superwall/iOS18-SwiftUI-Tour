@@ -21,14 +21,8 @@ struct ContentView: View {
                         headerView
                     }
                     Section("New APIs") {
-                        NavigationLink("Mesh Gradients") {
-                            MeshGradientExample()
-                        }
                         NavigationLink("Scrollview Additions") {
                             ScrollViewExample()
-                        }
-                        NavigationLink("Text Effects") {
-                            TextEffectExample()
                         }
                         NavigationLink("Zoom Transitions") {
                             ZoomExample()
@@ -41,6 +35,12 @@ struct ContentView: View {
                         }
                         NavigationLink("Color Blending") {
                             ColorBlendExample()
+                        }
+                        NavigationLink("Text Effects") {
+                            TextEffectExample()
+                        }
+                        NavigationLink("Mesh Gradients") {
+                            MeshGradientExample()
                         }
                         NavigationLink("Modal Sheet Sizing") {
                             ModalSheetSizeExample()

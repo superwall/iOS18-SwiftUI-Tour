@@ -87,7 +87,7 @@ struct DemoStickyView: View {
                 }
             }
             ForEach(1...imageCount, id: \.self) { _ in
-                Image(.beachZoom)
+                Image(.beach)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(height: 100)
@@ -104,7 +104,7 @@ struct DemoPresentedView: View {
                 .fontDesign(.serif)
                 .fontWidth(.expanded)
                 .fontWeight(.semibold)
-            Image(.beachZoom)
+            Image(.beach)
                 .scaledToFill()
                 .clipShape(.rect(cornerRadius: 16))
         }

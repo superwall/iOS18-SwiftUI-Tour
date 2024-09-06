@@ -57,7 +57,7 @@ struct ZoomExample: View {
                 .padding(.vertical, 32)
                 Text("Of course, you don't _have_ to use `NavigationStack`, even though the API may read like that. You can use them for modal presentations, too. Tapping on the image below will kick off a full screen presentation:")
                     .readingTextStyle()
-                Image(.beachZoom)
+                Image(.beach)
                     .resizable()
                     .clipShape(.rect(cornerRadius: 8))
                     .onTapGesture {
@@ -157,7 +157,7 @@ struct ImageGallery: View {
     let namespace: Namespace.ID
     
     var body: some View {
-        Image(.beachZoom)
+        Image(.beach)
             .navigationTransition(.zoom(sourceID: imageName, in: namespace))
     }
 }
