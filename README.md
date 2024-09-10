@@ -7,6 +7,9 @@ Use this companion app to tour the major additions to the SwiftUI framework whic
 This project requires Xcode 16 or later.
 
 ## What's Included
+The project is setup like a book with a table of contents. Just pick which API you're interested in learning more about, and you'll get interactive examples, complete with code:
+
+![Demo tour](/demo.gif)
 
 **Scrollview**
 - Controlling scroll positions.
